@@ -74,9 +74,9 @@ RNDBModel.create_db = function(db){
      */
     me.add_all = function(data_to_add, callback){
         if(data_to_add.length <= 0) return null;
-        
+
         var added_data = [];
-        
+
         var addItem = function(data_to_add) {
           if(data_to_add.length == 0 && callback) { return callback(added_data); }
           var data = data_to_add.pop();
@@ -101,6 +101,7 @@ RNDBModel.create_db = function(db){
                 if(callback){
                     callback(data_removed);
                 }
+                RNDBModel.DBEvents.emit("all")
             });
         });
     };
